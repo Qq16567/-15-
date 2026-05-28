@@ -1,0 +1,29 @@
+data = input("Растения (Название цвет размер рост, ...): ")
+plants = data.split(', ')
+print("\nРастения на ферме:")
+for p in plants:
+    print(f"  - {p}")
+
+
+hybrids_input = input("Гибриды (Роза+Тюльпан=Розотюль, ...): ")
+hybrids = {}
+for h in hybrids_input.split(', '):
+    left, right = h.split('=')
+    p1, p2 = sorted(left.split('+'))
+    hybrids[(p1, p2)] = right
+
+p1, p2 = sorted(input("Два растения через пробел: ").split())
+if (p1, p2) in hybrids:
+    print(f"Получен гибрид: {hybrids[(p1, p2)]}")
+else:
+    print("Эти растения нельзя скрестить.")
+
+name1 = input("Название 1: ")
+color1 = input("Цвет1 Размер1 Рост1: ").split()[0]
+name2 = input("Название 2: ")
+color2 = input("Цвет2 Размер2 Рост2: ").split()[0]
+
+if name1 < name2:
+    print(f"Цвет гибрида: {color1}")
+else:
+    print(f"Цвет гибрида: {color2}")
