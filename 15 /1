@@ -1,0 +1,31 @@
+
+
+maze = input("Лабиринт (25 символов): ")
+print("\nЛабиринт:")
+for i in range(0, 25, 5):
+    print(maze[i:i+5])
+
+
+pos_n = maze.find('н')
+pos_f = maze.find('ф')
+print(f"\nВход: строка {pos_n//5}, столбец {pos_n%5}")
+print(f"Выход: строка {pos_f//5}, столбец {pos_f%5}")
+
+
+dist = abs(pos_n//5 - pos_f//5) + abs(pos_n%5 - pos_f%5)
+print(f"Расстояние: {dist} шагов")
+
+
+print(f"Монет: {maze.count('м')}")
+
+
+damage = maze.count('л')*10 + maze.count('з')*50
+hp_left = 100 - damage
+print(f"Осталось HP: {hp_left} ({'❤'*(hp_left//10)})")
+
+
+emoji = {'0':'⬜','1':'⬛','л':'🔷','м':'🟡','ф':'🟫','з':'🐷','н':'⭐'}
+print("\nЛабиринт с эмодзи:")
+for i in range(0, 25, 5):
+    row = ''.join(emoji[c] for c in maze[i:i+5])
+    print(row)
