@@ -1,0 +1,31 @@
+
+# 1.1 Ввод и вывод лабиринта
+maze = input("Лабиринт (25 символов): ")
+print("\nЛабиринт:")
+for i in range(0, 25, 5):
+    print(maze[i:i+5])
+
+# 1.2-1.3 Координаты входа и выхода
+pos_n = maze.find('н')
+pos_f = maze.find('ф')
+print(f"\nВход: строка {pos_n//5}, столбец {pos_n%5}")
+print(f"Выход: строка {pos_f//5}, столбец {pos_f%5}")
+
+# 1.4 Расстояние
+dist = abs(pos_n//5 - pos_f//5) + abs(pos_n%5 - pos_f%5)
+print(f"Расстояние: {dist} шагов")
+
+# 1.5 Монеты
+print(f"Монет: {maze.count('м')}")
+
+# 1.6 Здоровье
+damage = maze.count('л')*10 + maze.count('з')*50
+hp_left = 100 - damage
+print(f"Осталось HP: {hp_left} ({'❤'*(hp_left//10)})")
+
+# 1.7 Эмодзи
+emoji = {'0':'⬜','1':'⬛','л':'🔷','м':'🟡','ф':'🟫','з':'🐷','н':'⭐'}
+print("\nЛабиринт с эмодзи:")
+for i in range(0, 25, 5):
+    row = ''.join(emoji[c] for c in maze[i:i+5])
+    print(row)
